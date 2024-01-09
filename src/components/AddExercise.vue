@@ -15,13 +15,13 @@ export default {
 
 <style scoped lang="scss">
 .add-exercise {
-  display: inline-block;
-  width: auto;
   background-color: $blue;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
+
 .plus-btn {
+  --animation-speed: 100ms;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,8 +29,10 @@ export default {
   border: none;
   color: white;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  transition: text-shadow 150ms ease-out;
-  margin: 10px 0;
+  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.33);
+  transition: text-shadow var(--animation-speed) ease-out, box-shadow var(--animation-speed) ease-out;
+  padding-top: 10px;
+  padding-bottom: 10px;
   user-select: none;
 
   span {
@@ -43,7 +45,8 @@ export default {
   }
 }
 .plus-btn:active {
-  text-shadow: 0px 0px 0px rgb(0 0 0 / 20%);
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.33);
 }
 
 </style>

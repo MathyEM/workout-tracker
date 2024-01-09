@@ -3,6 +3,11 @@
     <ProgramListItem />
     <ProgramListItem />
     <ProgramListItem />
+    <ProgramListItem />
+    <ProgramListItem />
+    <ProgramListItem />
+    <ProgramListItem />
+    <ProgramListItem />
   </div>
 </template>
 
@@ -21,9 +26,9 @@ import ProgramListItem from '@/components/subcomponents/ProgramListItem.vue'
   .program-list {
     display: grid;
     grid-template-columns: 1fr;
-    align-content: center;
-    justify-content: center;
+    justify-items: center;
     gap: 1rem;
-    width: fit-content//clamp(200px, 70vw, 400px);
+    width: 100%;
+    padding: 1rem;
   }
 </style>

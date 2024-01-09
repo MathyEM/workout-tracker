@@ -1,12 +1,16 @@
 <template>
-  <nav>
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
-  </nav>
+  <!-- <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav> -->
   <router-view/>
 </template>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+
 body {
   width: 100vw;
   height: 100svh;
