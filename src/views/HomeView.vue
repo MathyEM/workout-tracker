@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <AddExercise />
     <ProgramList />
+    <AddExercise />
   </div>
 </template>
 
@@ -20,8 +19,9 @@ export default {
 }
 </script>
 <style lang="scss">
-img {
-  display: block;
-  margin: auto;
-}
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 </style>
