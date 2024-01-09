@@ -1,6 +1,9 @@
 <template>
   <div class="add-exercise">
-    <button type="button" class="plus-btn">+</button>
+    <button type="button" class="plus-btn">
+      <span>+</span>
+      <h2>Create New Program</h2>
+    </button>
   </div>
 </template>
 
@@ -12,9 +15,11 @@ export default {
 
 <style scoped lang="scss">
 .add-exercise {
-  // border: 1px solid $main-black;
   display: inline-block;
   width: auto;
+  background-color: $blue;
+  position: absolute;
+  bottom: 0;
 }
 .plus-btn {
   display: flex;
@@ -22,17 +27,23 @@ export default {
   align-items: center;
   background-color: transparent;
   border: none;
-  font-size: 3.75rem;
-  color: $blue;
-  text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transition: text-shadow 150ms ease-out;
+  margin: 10px 0;
+  user-select: none;
+
+  span {
+    font-size: 3.75rem;
+    line-height: 0.5em;
+  }
+
+  * {
+    margin: 0;
+  }
 }
 .plus-btn:active {
   text-shadow: 0px 0px 0px rgb(0 0 0 / 20%);
 }
-.plus-btn::after {
-  content: "Create New Program";
-  font-size: 0.5em;
-  margin-top: -0.6em;
-}
+
 </style>

@@ -8,18 +8,22 @@
 
 <style lang="scss">
 body {
-  max-width: 100vw;
-  max-height: 100svh;
+  width: 100vw;
+  height: 100svh;
+  margin: 0;
 }
 
 #app {
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  max-width: 500px;
-  margin: auto;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
 }
 
 nav {
