@@ -7,7 +7,7 @@
     </div>
     <div class="data-group exercise-category">
       <label for="category">Category:</label>
-      <select id="category" @change="handleExerciseCategorySelect">
+      <select id="category" v-model="exerciseCategory">
         <option selected disabled>Please select exercise category</option>
         <option v-for="(category, index) in exerciseCategories" :key="index" :value="index">{{ category }}</option>
       </select>
@@ -29,7 +29,7 @@
     </div>
     <div class="data-group exercise-type">
       <label for="type">Type:</label>
-      <select id="type" @change="handleExerciseTypeSelect">
+      <select id="type" v-model="exerciseType">
         <option selected disabled>Please select exercise type</option>
         <option v-for="(type, index) in exerciseTypes" :key="index" :value="index">{{ type }}</option>
       </select>
@@ -40,6 +40,7 @@
     </div>
     <button @click="addExercise">Add Exercise</button>
   </div>
+  <button @click="tester()">tester</button>
 </template>
 
 <script>
@@ -61,6 +62,7 @@ export default {
       getExerciseCategory: 'getExerciseCategory',
       getExerciseType: 'getExerciseType',
       getExerciseNotes: 'getExerciseNotes',
+      getExercises: 'getExercises'
     }),
     name: {
       get() {
@@ -68,6 +70,22 @@ export default {
       },
       set(newValue) {
         this.SET_EXERCISE_NAME(newValue)
+      }
+    },
+    exerciseCategory: {
+      get() {
+        return this.getExerciseCategory
+      },
+      set(newValue) {
+        this.handleExerciseCategorySelect(newValue)
+      }
+    },
+    exerciseType: {
+      get() {
+        return this.getExerciseType
+      },
+      set(newValue) {
+        this.handleExerciseTypeSelect(newValue)
       }
     },
     notes: {
@@ -93,15 +111,13 @@ export default {
     handleMuscleGroupCheck(index, subIndex) {
       this.checkMuscleGroup({index, subIndex})
     },
-    handleExerciseCategorySelect(e) {
-      this.SET_EXERCISE_CATEGORY(e.target.value)
+    handleExerciseCategorySelect(value) {
+      this.SET_EXERCISE_CATEGORY(value)
     },
-    handleExerciseTypeSelect(e) {
-      console.log(e.target.value)
-      this.SET_EXERCISE_TYPE(e.target.value)
+    handleExerciseTypeSelect(value) {
+      this.SET_EXERCISE_TYPE(value)
     },
-
-  }
+  },
 }
 </script>
 

@@ -1,8 +1,8 @@
 const state = {
-  exerciseName: '',
-  exerciseCategory: '',
-  exerciseType: '',
-  exerciseNotes: '',
+  exerciseName: 'Lat Pulldown',
+  exerciseCategory: '1',
+  exerciseType: '0',
+  exerciseNotes: 'Nothing.',
   muscleGroups: [
     {
       name: 'Abs',
@@ -23,21 +23,21 @@ const state = {
     },
     {
       name: 'Back',
-      checked: false,
+      checked: true,
       subGroups: [
         {
           name: 'Latissimus Dorsi',
-          checked: false,
+          checked: true,
           disabled: false,
         },
         {
           name: 'Trapezius',
-          checked: false,
+          checked: true,
           disabled: false,
         },
         {
           name: 'Rhomboids',
-          checked: false,
+          checked: true,
           disabled: false,
         },
         {
@@ -106,14 +106,14 @@ const state = {
         },
         {
           name: 'Posterior Deltoid',
-          checked: false,
+          checked: true,
           disabled: false,
         },
       ]
     },
     {
       name: 'Biceps',
-      checked: false,
+      checked: true,
       subGroups: [
 
       ]
@@ -127,11 +127,11 @@ const state = {
     },
     {
       name: 'Forearm',
-      checked: false,
+      checked: true,
       subGroups: [
         {
           name: 'Brachioradialis',
-          checked: false,
+          checked: true,
           disabled: false,
         },
         {
@@ -182,25 +182,30 @@ const getters = {
   getExerciseCategory: state => state.exerciseCategory,
   getExerciseType: state => state.exerciseType,
   getExerciseNotes: state => state.exerciseNotes,
-  getSelectedMuscleGroups: state => state.muscleGroups.filter(muscleGroup => muscleGroup.checked == true),
-  getMuscleGroups: state => state.muscleGroups,
-  getSelectorMuscleGroups: state => {
-    const muscleGroups = state.muscleGroups
-    const renamedGroups = []
-    for (let i = 0; i < muscleGroups.length; i++) {
-      const muscleGroup = muscleGroups[i]
-      
-      renamedGroups.push(muscleGroup.name)
-      
-      for (let j = 0; j < muscleGroup.subGroups.length; j++) {
-        const subGroup = muscleGroup.subGroups[j]
-        renamedGroups.push(' -' + subGroup.name)
+  getSelectedMuscleGroups: state => {
+    const muscleGroupIndices = []
+
+    for (let i = 0; i < state.muscleGroups.length; i++) {
+      const muscleGroup = state.muscleGroups[i]
+      if (muscleGroup.checked === true) {
+
+        const subGroupIndices = []
+        for (let j = 0; j < muscleGroup.subGroups.length; j++) {
+          const subGroup = muscleGroup.subGroups[j];
+          
+          if (subGroup.checked === true) {
+            subGroupIndices.push(j)
+          }
+        }
+        muscleGroupIndices.push([i, ...subGroupIndices])
       }
     }
-    return renamedGroups
+    return muscleGroupIndices
   },
+  getMuscleGroups: state => state.muscleGroups,
   getExerciseCategories: state => state.exerciseCategories,
   getExerciseTypes: state => state.exerciseTypes,
+  getExercises: state => state.exercises,
 }
 
 const mutations = {
@@ -299,3 +304,20 @@ export default {
   mutations,
   actions,
 }
+
+// function convertMuscleIndicesToMuscleNames() {
+//   const activeMuscleGroups = []
+//   for (let i = 0; i < this.getExercises[1].muscleGroups.length; i++) {
+//     const muscleGroupIndex = this.getExercises[1].muscleGroups[i][0]
+//     const temp = {
+//       name: this.muscleGroups[muscleGroupIndex].name,
+//       subGroups: []
+//     }
+//     for (let j = 1; j < this.getExercises[1].muscleGroups[i].length; j++) {
+//       const subGroupIndex = this.getExercises[1].muscleGroups[i][j];
+//       temp.subGroups.push(this.muscleGroups[muscleGroupIndex].subGroups[subGroupIndex].name)
+//     }
+//     activeMuscleGroups.push(temp)
+//   }
+//   return activeMuscleGroups
+// }
