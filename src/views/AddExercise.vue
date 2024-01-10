@@ -1,13 +1,18 @@
 <template>
   <div class="add-exercise">
     <h2>Add New Exercise</h2>
-    <label for="name">Name:</label>
-    <input type="text" id="name" v-model="name" />
-    <label for="category">Category:</label>
-    <select id="category" v-model="category">
-      <option v-for="(category, index) in categories" :key="index" :value="category">{{ category }}</option>
-    </select>
-    <div class="muscle-groups">
+    <div class="data-group exercise-name">
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="name" />
+    </div>
+    <div class="data-group exercise-category">
+      <label for="category">Category:</label>
+      <select id="category" @change="handleExerciseCategorySelect">
+        <option selected disabled>Please select exercise category</option>
+        <option v-for="(category, index) in exerciseCategories" :key="index" :value="index">{{ category }}</option>
+      </select>
+    </div>
+    <div class="data-group muscle-groups">
       <label for="muscleGroups">Muscle Groups:</label>
       <template v-for="(muscle, index) in muscleGroups" :key="index">
         <div class="muscle-group">
@@ -22,48 +27,97 @@
         </template>
       </template>
     </div>
-    <label for="type">Type:</label>
-    <input type="text" id="type" v-model="type" />
-    <label for="comment">Comment:</label>
-    <input type="text" id="comment" v-model="comment" />
+    <div class="data-group exercise-type">
+      <label for="type">Type:</label>
+      <select id="type" @change="handleExerciseTypeSelect">
+        <option selected disabled>Please select exercise type</option>
+        <option v-for="(type, index) in exerciseTypes" :key="index" :value="index">{{ type }}</option>
+      </select>
+    </div>
+    <div class="data-group exercise-notes">
+      <label for="notes">Notes:</label>
+      <input type="text" id="notes" v-model="notes" />
+    </div>
     <button @click="addExercise">Add Exercise</button>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'AddExercise',
   data() {
     return {
-      name: '',
-      category: '',
-      // muscleGroups: '',
-      type: '',
-      comment: ''
+
     }
   },
   computed: {
     ...mapGetters({
-      categories: 'getExerciseCategories',
+      exerciseCategories: 'getExerciseCategories',
       muscleGroups: 'getMuscleGroups',
+      exerciseTypes: 'getExerciseTypes',
+      getExerciseName: 'getExerciseName',
+      getExerciseCategory: 'getExerciseCategory',
+      getExerciseType: 'getExerciseType',
+      getExerciseNotes: 'getExerciseNotes',
     }),
+    name: {
+      get() {
+        return this.getExerciseName
+      },
+      set(newValue) {
+        this.SET_EXERCISE_NAME(newValue)
+      }
+    },
+    notes: {
+      get() {
+        return this.getExerciseNotes
+      },
+      set(newValue) {
+        this.SET_EXERCISE_NOTES(newValue)
+      }
+    },
   },
   methods: {
     ...mapActions([
-      'checkMuscleGroup'
+      'checkMuscleGroup',
+      'addExercise'
+    ]),
+    ...mapMutations([
+      'SET_EXERCISE_NAME',
+      'SET_EXERCISE_CATEGORY',
+      'SET_EXERCISE_TYPE',
+      'SET_EXERCISE_NOTES',
     ]),
     handleMuscleGroupCheck(index, subIndex) {
       this.checkMuscleGroup({index, subIndex})
-    }
+    },
+    handleExerciseCategorySelect(e) {
+      this.SET_EXERCISE_CATEGORY(e.target.value)
+    },
+    handleExerciseTypeSelect(e) {
+      console.log(e.target.value)
+      this.SET_EXERCISE_TYPE(e.target.value)
+    },
+
   }
 }
 </script>
 
 <style scoped lang="scss">
 .add-exercise {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.data-group {
+  display: flex;
+  flex-direction: column;
   
+  select {
+    outline: none;
+  }
 }
 .muscle-groups {
   display: flex;

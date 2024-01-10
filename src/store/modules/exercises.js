@@ -1,4 +1,8 @@
 const state = {
+  exerciseName: '',
+  exerciseCategory: '',
+  exerciseType: '',
+  exerciseNotes: '',
   muscleGroups: [
     {
       name: 'Abs',
@@ -165,29 +169,27 @@ const state = {
     // Template for exercise object
     {
       name: '',
-      category: [
-        '',
-        '',
-      ],
-      muscleGroups: [
-        '',
-        '',
-      ],
+      category: '',
+      muscleGroups: [],
       type: '',
-      comment: '',
+      notes: '',
     }
   ]
 }
 
 const getters = {
-  getExerciseCategories: state => state.exerciseCategories,
+  getExerciseName: state => state.exerciseName,
+  getExerciseCategory: state => state.exerciseCategory,
+  getExerciseType: state => state.exerciseType,
+  getExerciseNotes: state => state.exerciseNotes,
+  getSelectedMuscleGroups: state => state.muscleGroups.filter(muscleGroup => muscleGroup.checked == true),
   getMuscleGroups: state => state.muscleGroups,
   getSelectorMuscleGroups: state => {
     const muscleGroups = state.muscleGroups
     const renamedGroups = []
     for (let i = 0; i < muscleGroups.length; i++) {
       const muscleGroup = muscleGroups[i]
-
+      
       renamedGroups.push(muscleGroup.name)
       
       for (let j = 0; j < muscleGroup.subGroups.length; j++) {
@@ -196,10 +198,24 @@ const getters = {
       }
     }
     return renamedGroups
-  }
+  },
+  getExerciseCategories: state => state.exerciseCategories,
+  getExerciseTypes: state => state.exerciseTypes,
 }
 
 const mutations = {
+  SET_EXERCISE_NAME(state, payload) {
+    state.exerciseName = payload
+  },
+  SET_EXERCISE_CATEGORY(state, payload) {
+    state.exerciseCategory = payload
+  },
+  SET_EXERCISE_TYPE(state, payload) {
+    state.exerciseType = payload
+  },
+  SET_EXERCISE_NOTES(state, payload) {
+    state.exerciseNotes = payload
+  },
   CHECK_MUSCLE_GROUP(state, {index, subIndex}) {
     const muscleGroup = state.muscleGroups[index]
     muscleGroup.checked = true
@@ -236,7 +252,9 @@ const mutations = {
       muscleGroup.checked = false
     }
   },
-
+  ADD_NEW_EXERCISE(state, payload) {
+    state.exercises.push(payload)
+  }
 }
 
 const actions = {
@@ -261,11 +279,16 @@ const actions = {
     
     
     commit('CHECK_MUSCLE_GROUP', {index, subIndex})
-    // const subGroupsAllChecked = muscleGroup.subGroups.filter(subGroup => subGroup.checked == true).length == muscleGroup.subGroups.length
-    // if (musc) {
-      
-    // }
     return
+  },
+  addExercise({commit, getters}) {
+    commit('ADD_NEW_EXERCISE', {
+      name: getters.getExerciseName,
+      category: getters.getExerciseCategory,
+      muscleGroups: getters.getSelectedMuscleGroups,
+      type: getters.getExerciseType,
+      notes: getters.getExerciseNotes
+    })
   }
 }
 
