@@ -1,7 +1,7 @@
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 'Back',
-  exerciseType: '0',
+  exerciseType: 'Weight and Reps',
   exerciseNotes: 'Nothing.',
   muscleGroups: [
     {

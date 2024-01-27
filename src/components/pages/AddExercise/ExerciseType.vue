@@ -1,10 +1,15 @@
 <template>
 <div class="exercise-type">
-  <label for="type">Type:</label>
+  <!-- <label for="type">Type:</label>
   <select id="type" v-model="exerciseType">
     <option selected disabled>Please select exercise type</option>
     <option v-for="(type, index) in getExerciseTypes" :key="index" :value="index">{{ type }}</option>
-  </select>
+  </select> -->
+  <v-select
+  label="Exercise type:"
+  v-model="exerciseType"
+  :items="getExerciseTypes"
+  variant="solo"></v-select>
 </div>
 </template>
 
