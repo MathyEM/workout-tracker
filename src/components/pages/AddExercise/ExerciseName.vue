@@ -1,7 +1,8 @@
 <template>
 <div class="exercise-name">
-  <label for="name">Name:</label>
-  <input type="text" id="name" v-model="name" />
+  <!-- <label for="name">Name:</label>
+  <input type="text" id="name"  /> -->
+  <v-text-field clearable label="Exercise name" variant="solo" v-model="name"></v-text-field>
 </div>
 </template>
 

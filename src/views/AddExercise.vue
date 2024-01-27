@@ -8,7 +8,7 @@
     <ExerciseNotes class="data-group"/>
     <AddExerciseButton/>
   </div>
-  <button @click="tester()">tester</button>
+  <button>tester</button>
 </template>
 
 <script>

@@ -14,6 +14,7 @@
 <script>
 import ProgramListItem from '@/components/subcomponents/ProgramListItem.vue'
 
+
   export default {
     name: 'ProgramList',
     components: {
