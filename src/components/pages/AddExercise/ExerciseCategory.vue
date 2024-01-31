@@ -1,14 +1,10 @@
 <template>
 <div class="exercise-category">
-  <!-- <label for="category">Category:</label>
-  <select id="category" v-model="exerciseCategory">
-    <option selected disabled>Please select exercise category</option>
-    <option v-for="(category, index) in getExerciseCategories" :key="index" :value="index">{{ category }}</option>
-  </select> -->
   <v-select
   label="Category:"
   v-model="exerciseCategory"
   :items="getExerciseCategories"
+  :item-props="CategoryProps"
   variant="solo"></v-select>
 </div>
 </template>
@@ -39,7 +35,16 @@ import { mapGetters, mapMutations } from 'vuex';
       handleExerciseCategorySelect(value) {
         this.SET_EXERCISE_CATEGORY(value)
       },
-    }
+      CategoryProps (item) {
+        return {
+          title: item.name,
+          value: item.id
+        }
+      },
+    },
+    mounted() {
+      // console.log(this.getExerciseCategories.keys())
+    },
   }
 </script>
 

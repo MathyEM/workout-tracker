@@ -1,5 +1,5 @@
 <template>
-<button @click="addExercise">Add Exercise</button>
+  <button @click="addExercise">Add Exercise</button>
 </template>
 
 <script>

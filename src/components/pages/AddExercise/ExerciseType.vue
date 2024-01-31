@@ -1,14 +1,10 @@
 <template>
 <div class="exercise-type">
-  <!-- <label for="type">Type:</label>
-  <select id="type" v-model="exerciseType">
-    <option selected disabled>Please select exercise type</option>
-    <option v-for="(type, index) in getExerciseTypes" :key="index" :value="index">{{ type }}</option>
-  </select> -->
   <v-select
   label="Exercise type:"
   v-model="exerciseType"
   :items="getExerciseTypes"
+  :item-props="TypeProps"
   variant="solo"></v-select>
 </div>
 </template>
@@ -38,6 +34,12 @@ import { mapGetters, mapMutations } from 'vuex';
       ]),
       handleExerciseTypeSelect(value) {
         this.SET_EXERCISE_TYPE(value)
+      },
+      TypeProps (item) {
+        return {
+          title: item.name,
+          value: item.id
+        }
       },
     }
   }

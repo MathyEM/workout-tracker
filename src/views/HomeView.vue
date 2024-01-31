@@ -3,7 +3,7 @@
     <!-- <p>{{ categories[0] }}</p> -->
     <ProgramList />
     <div class="create-new-program">
-      <router-link to="/add-exercise">
+      <router-link class="btn-link" to="/add-exercise">
         <VBtn class="plus-btn" color="primary">
         <!-- <button type="button" class="plus-btn"> -->
           <span class="plus">+</span>
@@ -54,6 +54,10 @@ export default {
   background-color: $blue;
   position: fixed;
   bottom: 0;
+
+  .btn-link {
+    text-decoration: none;
+  }
   
   .plus-btn, .v-btn__content {
     height: auto;

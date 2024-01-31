@@ -1,7 +1,7 @@
 const state = {
   exerciseName: 'Lat Pulldown',
-  exerciseCategory: 'Back',
-  exerciseType: 'Weight and Reps',
+  exerciseCategory: 1,
+  exerciseType: 0,
   exerciseNotes: 'Nothing.',
   muscleGroups: [
     {
@@ -143,27 +143,84 @@ const state = {
     }
   ],
   exerciseCategories: [
-    'Abs',
-    'Back',
-    'Biceps',
-    'Cardio',
-    'Chest',
-    'Legs',
-    'Shoulders',
-    'Stretching',
-    'Triceps',
+    {
+      id: 1,
+      name: 'Abs',
+    },
+    {
+      id: 2,
+      name: 'Back',
+    },
+    {
+      id: 3,
+      name: 'Biceps',
+    },
+    {
+      id: 4,
+      name: 'Cardio',
+    },
+    {
+      id: 5,
+      name: 'Chest',
+    },
+    {
+      id: 6,
+      name: 'Legs',
+    },
+    {
+      id: 7,
+      name: 'Shoulders',
+    },
+    {
+      id: 8,
+      name: 'Stretching',
+    },
+    {
+      id: 9,
+      name: 'Triceps',
+    },
   ],
   exerciseTypes: [
-    'Weight and Reps',
-    'Distance and Time',
-    'Weight and Time',
-    'Weight and Distance',
-    'Reps and Distance',
-    'Reps and Time',
-    'Weight',
-    'Reps',
-    'Distance',
-    'Time',
+    {
+      id: 1,
+      name: 'Weight and Reps',
+    },
+    {
+      id: 2,
+      name: 'Distance and Time',
+    },
+    {
+      id: 3,
+      name: 'Weight and Time',
+    },
+    {
+      id: 4,
+      name: 'Weight and Distance',
+    },
+    {
+      id: 5,
+      name: 'Reps and Distance',
+    },
+    {
+      id: 6,
+      name: 'Reps and Time',
+    },
+    {
+      id: 7,
+      name: 'Weight',
+    },
+    {
+      id: 8,
+      name: 'Reps',
+    },
+    {
+      id: 9,
+      name: 'Distance',
+    },
+    {
+      id: 10,
+      name: 'Time',
+    },
   ],
   exercises: [
     // Template for exercise object
@@ -179,8 +236,8 @@ const state = {
 
 const getters = {
   getExerciseName: state => state.exerciseName,
-  getExerciseCategory: state => state.exerciseCategory,
-  getExerciseType: state => state.exerciseType,
+  getExerciseCategory: state => state.exerciseCategories[state.exerciseCategory],
+  getExerciseType: state => state.exerciseTypes[state.exerciseType],
   getExerciseNotes: state => state.exerciseNotes,
   getSelectedMuscleGroups: state => {
     const muscleGroupIndices = []
