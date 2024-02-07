@@ -43,7 +43,7 @@ import { mapGetters, mapMutations } from 'vuex';
       },
     },
     mounted() {
-      // console.log(this.getExerciseCategories.keys())
+      
     },
   }
 </script>
