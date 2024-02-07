@@ -1,3 +1,5 @@
+var MurmurHash3 = require('imurmurhash');
+
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 1,
@@ -230,6 +232,7 @@ const state = {
       muscleGroups: [],
       type: '',
       notes: '',
+      hash: '',
     }
   ]
 }
@@ -344,14 +347,37 @@ const actions = {
     return
   },
   addExercise({commit, getters}) {
-    commit('ADD_NEW_EXERCISE', {
+    const exercise = {
       name: getters.getExerciseName,
       category: getters.getExerciseCategory,
       muscleGroups: getters.getSelectedMuscleGroups,
       type: getters.getExerciseType,
-      notes: getters.getExerciseNotes
-    })
+      notes: getters.getExerciseNotes,
+    }
+
+    let hashState = new MurmurHash3()
+    hashState = hashState.hash(JSON.stringify(exercise))
+
+    const hash = hashState.result()
+
+    if(checkHashes(hash)) {
+      console.log('exercise already exists.')
+      return
+    }
+    
+    exercise.hash = hash
+    commit('ADD_NEW_EXERCISE', exercise)
+  },
+  checkHashes({ state }, hash) {
+    const matches = state.exercises.find((exercise) => exercise.hash == hash)
+    console.log(matches)
   }
+}
+
+function checkHashes(hash) {
+  const matches = state.exercises.find((exercise) => exercise.hash == hash)
+  console.log(state.exercises)
+  return matches
 }
 
 export default {
@@ -361,6 +387,7 @@ export default {
   mutations,
   actions,
 }
+
 
 // function convertMuscleIndicesToMuscleNames() {
 //   const activeMuscleGroups = []
