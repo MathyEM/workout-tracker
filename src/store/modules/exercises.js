@@ -348,11 +348,10 @@ const actions = {
   },
   addExercise({commit, getters}) {
     const exercise = {
-      name: getters.getExerciseName,
+      name: getters.getExerciseName.toLowerCase(),
       category: getters.getExerciseCategory,
       muscleGroups: getters.getSelectedMuscleGroups,
       type: getters.getExerciseType,
-      notes: getters.getExerciseNotes,
     }
 
     let hashState = new MurmurHash3()
@@ -364,19 +363,17 @@ const actions = {
       console.log('exercise already exists.')
       return
     }
-    
+
+    exercise.name = getters.getExerciseName
+    exercise.notes = getters.getExerciseNotes
     exercise.hash = hash
     commit('ADD_NEW_EXERCISE', exercise)
+    console.log(state.exercises)
   },
-  checkHashes({ state }, hash) {
-    const matches = state.exercises.find((exercise) => exercise.hash == hash)
-    console.log(matches)
-  }
 }
 
 function checkHashes(hash) {
   const matches = state.exercises.find((exercise) => exercise.hash == hash)
-  console.log(state.exercises)
   return matches
 }
 
