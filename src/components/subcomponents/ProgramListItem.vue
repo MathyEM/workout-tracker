@@ -6,7 +6,7 @@
       <p class="exercises-days-count">Unique exercises: <span>32</span></p>
     </v-card-subtitle>
     <v-card-actions class="card-actions">
-      <v-btn icon="mdi-pencil" rounded="0" density="comfortable"></v-btn>
+      <v-btn icon="mdi-pencil" rounded="lg" density="comfortable"></v-btn>
     </v-card-actions>
   </v-card>
 </template>
