@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ProgramListItem from '@/components/subcomponents/ProgramListItem.vue'
+import ProgramListItem from '@/components/pages/HomeView/ProgramListItem.vue'
 
 
   export default {
