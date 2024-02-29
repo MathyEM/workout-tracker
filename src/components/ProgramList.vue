@@ -32,6 +32,6 @@ import ProgramListItem from '@/components/subcomponents/ProgramListItem.vue'
     gap: 1rem;
     width: 100%;
     padding: 1rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 5.5rem;
   }
 </style>

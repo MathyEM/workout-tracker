@@ -43,8 +43,8 @@
   background-color: transparent;
   border: none;
   color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   user-select: none;
 
   span.plus {
