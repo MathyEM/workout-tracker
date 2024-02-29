@@ -11,7 +11,7 @@
         <v-text-field clearable label="Program name" variant="solo"></v-text-field>
       </v-card-text>
       <v-card-actions>
-        <router-link class="btn-link" to="/add-exercise">
+        <router-link class="btn-link" to="/create-program">
           <v-btn text="Confirm" @click="dialog = false"></v-btn>
         </router-link>
         <v-btn text="Close" @click="dialog = false"></v-btn>

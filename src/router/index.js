@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AddExercise from '../views/AddExercise.vue'
+import CreateProgram from '../views/CreateProgram.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/add-exercise',
     name: 'add-exercise',
     component: AddExercise
+  },
+  {
+    path: '/create-program',
+    name: 'create-program',
+    component: CreateProgram
   },
 ]
 
