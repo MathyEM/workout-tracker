@@ -228,10 +228,7 @@ const state = {
     // Template for exercise object
     {
       "name": "Lat Pulldown",
-      "category": {
-          "id": 2,
-          "name": "Back"
-      },
+      "category": 1,
       "muscleGroups": [
           [
               1,
@@ -247,12 +244,9 @@ const state = {
               0
           ]
       ],
-      "type": {
-          "id": 1,
-          "name": "Weight and Reps"
-      },
+      "type": 0,
       "notes": "Nothing.",
-      "hash": 1789260168
+      "hash": 3357665225
     }
   ]
 }
@@ -366,12 +360,12 @@ const actions = {
     commit('CHECK_MUSCLE_GROUP', {index, subIndex})
     return
   },
-  addExercise({commit, getters}) {
+  addExercise({state, commit, getters}) {
     const exercise = {
       name: getters.getExerciseName.toLowerCase(),
-      category: getters.getExerciseCategory,
+      category: state.exerciseCategory,
       muscleGroups: getters.getSelectedMuscleGroups,
-      type: getters.getExerciseType,
+      type: state.exerciseType,
     }
 
     let hashState = new MurmurHash3()
