@@ -9,7 +9,7 @@
 <script>
 // @ is an alias to /src
 import ProgramList from '@/components/ProgramList.vue'
-import CreateNewProgramNameDialog from '@/components/pages/CreateNewProgram/CreateNewProgramNameDialog.vue'
+import CreateNewProgramNameDialog from '@/components/pages/HomeView/CreateNewProgramNameDialog.vue'
 
 import { mapGetters } from 'vuex';
 
