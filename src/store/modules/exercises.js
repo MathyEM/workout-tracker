@@ -227,12 +227,32 @@ const state = {
   exercises: [
     // Template for exercise object
     {
-      name: '',
-      category: '',
-      muscleGroups: [],
-      type: '',
-      notes: '',
-      hash: '',
+      "name": "Lat Pulldown",
+      "category": {
+          "id": 2,
+          "name": "Back"
+      },
+      "muscleGroups": [
+          [
+              1,
+              0,
+              1,
+              2
+          ],
+          [
+              5
+          ],
+          [
+              7,
+              0
+          ]
+      ],
+      "type": {
+          "id": 1,
+          "name": "Weight and Reps"
+      },
+      "notes": "Nothing.",
+      "hash": 1789260168
     }
   ]
 }
