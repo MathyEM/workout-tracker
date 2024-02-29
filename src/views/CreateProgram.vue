@@ -1,5 +1,6 @@
 <template>
   <div class='create-program'>
+    <h2>Create New Program</h2>
     
   </div>
 </template>
