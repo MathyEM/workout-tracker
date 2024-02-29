@@ -36,7 +36,8 @@
   position: fixed;
   bottom: 0;
 }
-.plus-btn, .v-btn__content {
+.create-new-program .plus-btn, .v-btn__content {
+  --y-padding: 1.5rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -44,8 +45,8 @@
   background-color: transparent;
   border: none;
   color: white;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: var(--y-padding);
+  padding-bottom: var(--y-padding);
   user-select: none;
 
   span.plus {
