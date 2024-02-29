@@ -39,9 +39,7 @@ export default {
 
 <style scoped lang="scss">
 .add-exercise {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  @include form-layout
 }
 .data-group {
   display: flex;

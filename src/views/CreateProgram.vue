@@ -13,8 +13,6 @@
 
 <style scoped lang='scss'>
   .create-program {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+    @include form-layout
   }
 </style>

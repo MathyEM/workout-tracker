@@ -21,7 +21,7 @@ module.exports = defineConfig({
         sass: {
             sourceMap: false,
             additionalData: `
-            @import "@/assets/scss/_variables.scss";
+            @import "@/assets/scss/globals.scss";
             `,
         }
     }
