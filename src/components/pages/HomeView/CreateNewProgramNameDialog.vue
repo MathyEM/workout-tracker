@@ -12,8 +12,9 @@
       </v-card-text>
       <v-card-actions>
         <router-link class="btn-link" to="/add-exercise">
-          <v-btn text="Close Dialog" @click="dialog = false"></v-btn>
+          <v-btn text="Confirm" @click="dialog = false"></v-btn>
         </router-link>
+        <v-btn text="Close" @click="dialog = false"></v-btn>
     </v-card-actions>
     </v-card>
   </v-dialog>
