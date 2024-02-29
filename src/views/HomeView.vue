@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <p>{{ categories[0] }}</p> -->
     <ProgramList />
     <CreateNewProgramNameDialog />
   </div>
