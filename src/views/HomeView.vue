@@ -1,14 +1,14 @@
 <template>
   <div class="home">
     <ProgramList />
-    <CreateNewProgramNameDialog />
+    <CreateNewProgramDialog />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import ProgramList from '@/components/pages/HomeView/ProgramList.vue'
-import CreateNewProgramNameDialog from '@/components/pages/HomeView/CreateNewProgramNameDialog.vue'
+import CreateNewProgramDialog from '@/components/pages/HomeView/CreateNewProgramDialog.vue'
 
 import { mapGetters } from 'vuex';
 
@@ -16,7 +16,7 @@ export default {
   name: 'HomeView',
   components: {
     ProgramList,
-    CreateNewProgramNameDialog,
+    CreateNewProgramDialog,
   },
   data() {
     return {
