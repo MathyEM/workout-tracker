@@ -8,12 +8,10 @@
   <v-dialog class="create-new-program" v-model="dialog" width="auto">
     <v-card max-width="400" title="Choose a name for you new program">
       <v-card-text>
-        <ProgramName/>
+        <ProgramName @keyup.enter="goToCreateProgram"/>
       </v-card-text>
       <v-card-actions>
-        <router-link class="btn-link" to="/create-program">
-          <v-btn text="Confirm" @click="dialog = false"></v-btn>
-        </router-link>
+        <v-btn text="Confirm" @click="goToCreateProgram"></v-btn>
         <v-btn text="Close" @click="dialog = false"></v-btn>
     </v-card-actions>
     </v-card>
@@ -31,6 +29,12 @@ export default {
     return {
       dialog: false,
     }
+  },
+  methods: {
+    goToCreateProgram() {
+      this.dialog = false
+      this.$router.push({ name: 'create-program' })
+    },
   }
 }
 </script>
