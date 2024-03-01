@@ -59,6 +59,9 @@ const mutations = {
   SET_PROGRAM_NAME(state, payload) {
     state.programName = payload
   },
+  SET_PROGRAM_DESCRIPTION(state, payload) {
+    state.programDescription = payload
+  },
 }
 
 const actions = {
