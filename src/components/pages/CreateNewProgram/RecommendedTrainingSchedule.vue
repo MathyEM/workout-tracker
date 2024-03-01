@@ -10,8 +10,5 @@
   </script>
   
   <style scoped lang="scss">
-  .recommended-training-schedule {
-  
-  }
   </style>
   
