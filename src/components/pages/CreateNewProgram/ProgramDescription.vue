@@ -38,8 +38,6 @@ import { mapGetters, mapMutations } from 'vuex';
   </script>
   
   <style scoped lang="scss">
-  .program-description {
-  
-  }
+
   </style>
   
