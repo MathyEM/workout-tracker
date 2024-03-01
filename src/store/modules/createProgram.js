@@ -49,11 +49,16 @@ const state = {
 }
 
 const getters = {
-
+  getProgramName: state => state.programName,
+  getProgramDescription: state => state.programDescription,
+  getProgramDays: state => state.programDays,
+  getProgramDay: (state) => (id) => state.programDays[id],
 }
 
 const mutations = {
-
+  SET_PROGRAM_NAME(state, payload) {
+    state.programName = payload
+  },
 }
 
 const actions = {

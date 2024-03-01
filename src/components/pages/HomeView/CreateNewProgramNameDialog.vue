@@ -8,7 +8,7 @@
   <v-dialog class="create-new-program" v-model="dialog" width="auto">
     <v-card max-width="400" title="Choose a name for you new program">
       <v-card-text>
-        <v-text-field clearable label="Program name" variant="solo"></v-text-field>
+        <ProgramName/>
       </v-card-text>
       <v-card-actions>
         <router-link class="btn-link" to="/create-program">
@@ -21,14 +21,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'CreateNewProgramNameDialog',
-    data() {
-      return {
-        dialog: false,
-      }
+import ProgramName from "@/components/pages/CreateNewProgram/ProgramName.vue"
+export default {
+  name: 'CreateNewProgramNameDialog',
+  components: {
+    ProgramName,
+  },
+  data() {
+    return {
+      dialog: false,
     }
   }
+}
 </script>
 
 <style scoped lang='scss'>
