@@ -6,7 +6,7 @@
       no-resize
       label="Program description"
       variant="solo"
-      model-value="name">
+      :model-value=description>
     </v-textarea>
     </div>
   </template>
@@ -20,7 +20,7 @@ import { mapGetters, mapMutations } from 'vuex';
       ...mapGetters({
         getProgramDesciption: 'getProgramDesciption',
       }),
-      name: {
+      description: {
         get() {
           return this.getProgramDesciption
         },
