@@ -1,10 +1,10 @@
 <template>
   <div class='create-program'>
     <h2>Create New Program</h2>
-      <ProgramName/>
-      <ProgramDescription/>
-      <AddNewProgramDayButton/>
-      <ProgramTrainingDayCard :exercises="[ {name: 'Lat Pulldown' } ]" title=""/>
+    <ProgramName/>
+    <ProgramDescription/>
+    <AddNewProgramDayButton/>
+    <ProgramTrainingDayCard :exercises="exercises" title=""/>
   </div>
 </template>
 
@@ -21,6 +21,11 @@ import ProgramTrainingDayCard from "@/components/pages/CreateNewProgram/ProgramT
       ProgramDescription,
       AddNewProgramDayButton,
       ProgramTrainingDayCard,
+    },
+    data() {
+      return {
+        exercises: [ {name: 'Lat Pulldown' } ]
+      }
     }
   }
 </script>
