@@ -4,15 +4,21 @@
     <ProgramName/>
     <ProgramDescription/>
     <AddNewProgramDayButton/>
-    <ProgramTrainingDayCard :exercises="exercises" title=""/>
+    <template v-for="(Workout, index) in getProgramWorkouts" :key="index">
+      <ProgramWorkoutCard :exercises="Workout.exercises" :id="index" title=""/>
+    </template>
+    <AddNewExerciseDialog/>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import ProgramName from "@/components/pages/CreateNewProgram/ProgramName.vue"
 import ProgramDescription from "@/components/pages/CreateNewProgram/ProgramDescription.vue"
 import AddNewProgramDayButton from "@/components/pages/CreateNewProgram/AddNewProgramDayButton.vue"
-import ProgramTrainingDayCard from "@/components/pages/CreateNewProgram/ProgramTrainingDayCard.vue"
+import ProgramWorkoutCard from "@/components/pages/CreateNewProgram/ProgramWorkoutCard.vue"
+import AddNewExerciseDialog from '@/components/pages/CreateNewProgram/AddNewExerciseDialog.vue'
 
   export default {
     name: 'CreateProgram',
@@ -20,12 +26,18 @@ import ProgramTrainingDayCard from "@/components/pages/CreateNewProgram/ProgramT
       ProgramName,
       ProgramDescription,
       AddNewProgramDayButton,
-      ProgramTrainingDayCard,
+      ProgramWorkoutCard,
+      AddNewExerciseDialog,
     },
     data() {
       return {
         exercises: [ {name: 'Lat Pulldown' } ]
       }
+    },
+    computed: {
+      ...mapGetters([
+        "getProgramWorkouts",
+      ])
     }
   }
 </script>
