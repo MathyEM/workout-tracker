@@ -18,11 +18,11 @@ import { mapGetters, mapMutations } from 'vuex';
     name: 'ProgramDescription',
     computed: {
       ...mapGetters({
-        getProgramDesciption: 'getProgramDesciption',
+        getProgramDescription: 'getProgramDescription',
       }),
       description: {
         get() {
-          return this.getProgramDesciption
+          return this.getProgramDescription
         },
         set(newValue) {
           this.SET_PROGRAM_DESCRIPTION(newValue)
