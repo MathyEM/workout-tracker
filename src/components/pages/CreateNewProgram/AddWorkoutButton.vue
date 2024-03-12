@@ -1,6 +1,6 @@
 <template>
   <div class='add-workout'>
-    <v-btn @click="addWorkout" class="plus-btn" block><span class="plus">+</span>Add Training Day</v-btn>
+    <v-btn @click="addWorkout" class="plus-btn" block><span class="plus">+</span>Add Workout</v-btn>
   </div>
 </template>
 
@@ -22,5 +22,6 @@ span.plus {
   font-size: 1.5em;
   font-weight: lighter;
   line-height: 0.5em;
+  padding-right: 0.25em;
 }
 </style>
