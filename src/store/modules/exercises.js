@@ -1,5 +1,3 @@
-import { sha256Hash } from ".."
-
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 1,
@@ -360,7 +358,7 @@ const actions = {
     commit('CHECK_MUSCLE_GROUP', {index, subIndex})
     return
   },
-  async addExercise({state, commit, getters}) {
+  async addExercise({state, commit, getters, dispatch}) {
     const exercise = {
       name: getters.getExerciseName.toLowerCase(),
       category: state.exerciseCategory,
@@ -368,7 +366,7 @@ const actions = {
       type: state.exerciseType,
     }
 
-    const hash = await sha256Hash(exercise)
+    const hash = await dispatch("sha256Hash", exercise)
 
     if(checkHashes(hash)) {
       console.log('exercise already exists.')
