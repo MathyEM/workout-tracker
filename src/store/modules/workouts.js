@@ -1,6 +1,7 @@
 const state = {
   editWorkoutDialogId: null,
   showEditWorkoutDialog: false,
+  repTypes: ["Reps", "RPE", "RR"],
   workouts: [
     /*
     type Workout = {
@@ -40,11 +41,26 @@ const mutations = {
 
 const actions = {
   addWorkout({ commit }) {
+     /*
+    type Workout = {
+      "name": String,
+      "exercises": [
+        {
+          "exerciseHash": HashString,
+          "repType": ["Reps"|"RPE"|"RR"],
+          "repRangeMin": Number,
+          "repRangeMax": Number,
+          "notes": String,
+        }
+      ]
+    }
+    */
     const workout = {
-      name: "",
+      name: "Back day",
       exercises: [
         {
-          name: "Lat Pulldown",
+          exerciseHash: "asdasd",
+          repType: "",
           repRangeMin: 6,
           repRangeMax: 12,
           notes: "Slow and controlled negative"
