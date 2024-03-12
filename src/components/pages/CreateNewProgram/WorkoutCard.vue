@@ -1,5 +1,5 @@
 <template>
-  <v-card class="program-workout-card">
+  <v-card class="workout-card">
     <v-card-title>{{ title || 'Training day' }}</v-card-title>
     <v-card-subtitle>
       <p v-if="exercises.length < 1">No exercises added yet</p>
@@ -24,7 +24,7 @@
 import { mapMutations } from 'vuex'
 
   export default {
-    name: 'ProgramWorkoutCard',
+    name: 'WorkoutCard',
     props: {
       title: String,
       exercises: Array,
@@ -53,7 +53,7 @@ import { mapMutations } from 'vuex'
 </style>
 
 <style lang='scss'>
-  .program-workout-card .card-actions button span.v-btn__content {
+  .workout-card .card-actions button span.v-btn__content {
     font-size: 0.8em;
   }
 </style>
