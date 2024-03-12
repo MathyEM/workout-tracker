@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import createProgram from './modules/createProgram'
+import programs from './modules/programs'
 import exercises from './modules/exercises'
 
 export default createStore({
@@ -12,7 +12,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    createProgram,
+    programs,
     exercises
   }
 })
