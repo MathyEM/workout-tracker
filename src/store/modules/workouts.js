@@ -79,11 +79,11 @@ const actions = {
       name: "Back day",
       exercises: [
         {
-          exerciseHash: "asdasd",
-          repType: "",
-          repRangeMin: 6,
-          repRangeMax: 12,
-          notes: "Slow and controlled negative"
+          hash: "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151",
+          repType: null,
+          repRangeMin: null,
+          repRangeMax: null,
+          notes: null,
         }
     ],
       notes: "",

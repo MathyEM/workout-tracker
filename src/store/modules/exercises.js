@@ -278,6 +278,7 @@ const getters = {
   getExerciseCategories: state => state.exerciseCategories,
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
+  getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash )
 }
 
 const mutations = {

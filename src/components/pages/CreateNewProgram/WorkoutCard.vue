@@ -4,7 +4,7 @@
     <v-card-subtitle>
       <p v-if="exercises.length < 1">No exercises added yet</p>
       <ul v-else>
-        <li v-for="(exercise, index) in exercises.slice(0, 5)" :key="index">{{ exercise.name }}</li>
+        <li v-for="(exercise, index) in exercises.slice(0, 5)" :key="index">{{ getExercise(exercise.hash).name }}</li>
       </ul>
 
     </v-card-subtitle>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 
   export default {
     name: 'WorkoutCard',
@@ -32,6 +32,11 @@ import { mapMutations } from 'vuex'
         type: Number,
         required: true
       },
+    },
+    computed: {
+      ...mapGetters([
+        "getExercise",
+      ]),
     },
     methods: {
       openDialog() {
