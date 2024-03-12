@@ -2,7 +2,7 @@
   <v-dialog class="edit-workout" v-model="controlDialog" width="auto">
     <v-card max-width="600" title="Edit Workout">
       <v-card-text>
-        <v-card variant="tonal" v-for="(exercise, index) in getWorkout(getEditWorkoutDialogId).exercises" :key="index">
+        <v-card class="workout" :class="'workout-'+index" variant="tonal" v-for="(exercise, index) in getWorkout(getEditWorkoutDialogId).exercises" :key="index">
           <v-card-title><v-text-field label="Exercise name" type="number" :text="exercise.name" v-model="exercise.name"/></v-card-title>
           <v-card-text>
             <div class="exercise-rep-range">
@@ -39,7 +39,9 @@
             <v-btn text="Cancel" @click="closeDialog"/>
           </v-card-actions> -->
         </v-card>
-        <v-btn variant="tonal"><span>+</span>Edit Workout</v-btn>
+        <div class="btn-container">
+          <v-btn class="edit-workout" variant="tonal"><span>+</span>Edit Workout</v-btn>
+        </div>
       </v-card-text>
       <v-card-actions>
         <v-btn text="Save"/>
@@ -107,7 +109,7 @@ import { mapGetters, mapMutations } from 'vuex'
     grid-template-columns: 2fr 3fr min-content 3fr;
     align-items: center;
     padding-bottom: 2em;
-    gap: 0.5em;
+    gap: 0.75em;
 
     span {
       font-size: 1.5em;
@@ -120,6 +122,12 @@ import { mapGetters, mapMutations } from 'vuex'
 </style>
 
 <style lang="scss">
+  .edit-workout {
+    .v-card .v-card-text {
+      display: grid;
+      gap: 1em;
+    }
+  }
   .exercise-rep-range {
     .v-input .v-input__details {
       display: none;
