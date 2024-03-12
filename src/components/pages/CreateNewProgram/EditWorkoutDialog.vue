@@ -58,8 +58,6 @@ import { mapGetters, mapMutations } from 'vuex'
     name: 'EditWorkoutDialog',
     data() {
       return {
-        repMin: 6,
-        repMax: 12,
       }
     },
     computed: {
@@ -85,7 +83,23 @@ import { mapGetters, mapMutations } from 'vuex'
         set(newValue) {
           this.UPDATE_SELECTED_REP_TYPE(newValue)
         }
-      }
+      },
+      repMin: {
+        get() {
+          return 6
+        },
+        set() {
+          
+        }
+      },
+      repMax: {
+        get() {
+          return 12
+        },
+        set() {
+          
+        }
+      },
     },
     methods: {
       ...mapMutations([

@@ -78,13 +78,13 @@ const actions = {
     const workout = {
       name: "Back day",
       exercises: [
-        {
-          hash: "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151",
-          repType: null,
-          repRangeMin: null,
-          repRangeMax: null,
-          notes: null,
-        }
+        // {
+        //   hash: "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151",
+        //   repType: null,
+        //   repRangeMin: null,
+        //   repRangeMax: null,
+        //   notes: null,
+        // }
     ],
       notes: "",
     }
