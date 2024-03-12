@@ -21,7 +21,7 @@
             <v-btn text="Cancel" @click="closeDialog"/>
           </v-card-actions> -->
         </v-card>
-        <v-btn variant="tonal"><span>+</span>Add Exercise</v-btn>
+        <v-btn variant="tonal"><span>+</span>Edit Workout</v-btn>
       </v-card-text>
       <v-card-actions>
         <v-btn text="Save"/>
