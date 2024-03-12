@@ -39,6 +39,7 @@
             <v-btn text="Cancel" @click="closeDialog"/>
           </v-card-actions> -->
         </v-card>
+        <AddExerciseDialog/>
         <div class="btn-container">
           <v-btn class="edit-workout" variant="tonal"><span>+</span>Add Exercise</v-btn>
         </div>
@@ -52,10 +53,14 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex';
+import AddExerciseDialog from '@/components/pages/CreateNewProgram/AddExerciseDialog.vue';
 
   export default {
     name: 'EditWorkoutDialog',
+    components: {
+      AddExerciseDialog,
+    },
     data() {
       return {
       }
@@ -64,6 +69,7 @@ import { mapGetters, mapMutations } from 'vuex'
       ...mapGetters([
         "getShowEditWorkoutDialog",
         "getEditWorkoutDialogId",
+        "getShowAddExerciseDialog",
         "getWorkout",
         "getRepTypes",
         "getSelectedRepType",
@@ -74,6 +80,14 @@ import { mapGetters, mapMutations } from 'vuex'
         },
         set(newValue) {
           this.SET_SHOW_EDIT_WORKOUT_DIALOG(newValue)
+        }
+      },
+      controlAddExerciseDialog: {
+        get() {
+          return this.getShowAddExerciseDialog
+        },
+        set(newValue) {
+          this.SET_SHOW_ADD_EXERCISE_DIALOG(newValue)
         }
       },
       repType: {
@@ -105,6 +119,7 @@ import { mapGetters, mapMutations } from 'vuex'
       ...mapMutations([
         'SET_SHOW_EDIT_WORKOUT_DIALOG',
         "UPDATE_SELECTED_REP_TYPE",
+        "SET_SHOW_ADD_EXERCISE_DIALOG",
       ]),
       closeDialog() {
         this.SET_SHOW_EDIT_WORKOUT_DIALOG(false)

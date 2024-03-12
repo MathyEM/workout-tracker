@@ -226,7 +226,7 @@ const state = {
     // Template for exercise object
     {
       "name": "Lat Pulldown",
-      "category": 1,
+      "category": 2,
       "muscleGroups": [
           [1, 0, 1, 2],
           [5],
@@ -282,8 +282,9 @@ const getters = {
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
   getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash),
-  getCategoryExercises: (state) => (categoryId) => {
-    state.exercises.find((exercise) => exercise.category == categoryId)
+  getCategoryExercises: (rootState) => (categoryId) => {
+    const exercise = rootState.exercises.filter((exercise) => exercise.category == categoryId)
+    return exercise || null
   }
 }
 
@@ -386,6 +387,11 @@ const actions = {
     commit('ADD_NEW_EXERCISE', exercise)
     console.log(state.exercises)
   },
+  fetchCategoryExercises({ rootState }, categoryId) {
+    console.log(rootState.exercises.exercises)
+    const exercise = rootState.exercises.exercises.filter((exercise) => exercise.category == categoryId)
+    return exercise || null
+  }
 }
 
 function checkHashes(hash) {
