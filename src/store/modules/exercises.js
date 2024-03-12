@@ -282,9 +282,17 @@ const getters = {
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
   getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash),
-  getCategoryExercises: (rootState) => (categoryId) => {
-    const exercise = rootState.exercises.filter((exercise) => exercise.category == categoryId)
-    return exercise || null
+  // getCategoryExercises: (rootState) => (categoryId) => {
+  //   // console.log(rootState.exercises)
+  //   const exercise = rootState.exercises.filter((exercise) => exercise.category == categoryId)
+  //   return exercise || null
+  // },
+  getCategorizedExercises: rootState => {
+    const categorizedExercises = []
+    rootState.exerciseCategories.forEach(category => {
+      categorizedExercises[category.name] = rootState.exercises.filter(exercise => exercise.category == category.id)
+    })
+    return categorizedExercises
   }
 }
 
