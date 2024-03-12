@@ -3,7 +3,7 @@
     <h2>Create New Program</h2>
     <ProgramName/>
     <ProgramDescription/>
-    <AddNewProgramDayButton/>
+    <AddWorkoutButton/>
     <template v-for="(Workout, index) in getProgramWorkouts" :key="index">
       <ProgramWorkoutCard :exercises="Workout.exercises" :id="index" title=""/>
     </template>
@@ -16,7 +16,7 @@ import { mapGetters } from 'vuex';
 
 import ProgramName from "@/components/pages/CreateNewProgram/ProgramName.vue"
 import ProgramDescription from "@/components/pages/CreateNewProgram/ProgramDescription.vue"
-import AddNewProgramDayButton from "@/components/pages/CreateNewProgram/AddNewProgramDayButton.vue"
+import AddWorkoutButton from "@/components/pages/CreateNewProgram/AddWorkoutButton.vue"
 import ProgramWorkoutCard from "@/components/pages/CreateNewProgram/ProgramWorkoutCard.vue"
 import EditWorkoutDialog from '@/components/pages/CreateNewProgram/EditWorkoutDialog.vue'
 
@@ -25,7 +25,7 @@ import EditWorkoutDialog from '@/components/pages/CreateNewProgram/EditWorkoutDi
     components: {
       ProgramName,
       ProgramDescription,
-      AddNewProgramDayButton,
+      AddWorkoutButton,
       ProgramWorkoutCard,
       EditWorkoutDialog,
     },

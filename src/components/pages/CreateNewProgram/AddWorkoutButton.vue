@@ -1,5 +1,5 @@
 <template>
-  <div class='add-new-program-day-button'>
+  <div class='add-workout'>
     <v-btn @click="addProgramWorkout" class="plus-btn" block><span class="plus">+</span>Add Training Day</v-btn>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import { mapActions } from 'vuex';
 
   export default {
-    name: 'AddNewProgramDayButton',
+    name: 'AddWorkoutButton',
     methods: {
       ...mapActions([
         "addProgramWorkout",
