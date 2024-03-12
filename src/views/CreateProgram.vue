@@ -5,7 +5,7 @@
     <ProgramDescription/>
     <AddWorkoutButton/>
     <template v-for="(workout, index) in getWorkouts" :key="index">
-      <WorkoutCard :exercises="workout.exercises" :id="index" title=""/>
+      <WorkoutCard :exercises="workout.exercises" :id="index" :title="workout.name"/>
     </template>
     <EditWorkoutDialog/>
   </div>
