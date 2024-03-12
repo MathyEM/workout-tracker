@@ -2,23 +2,31 @@
   <v-dialog class="add-new-exercise" v-model="controlDialog" width="auto">
     <v-card max-width="600" title="Edit Workout">
       <v-card-text>
-        <ul class="exercise-list">
-          <li class="exercise-list-headers">
-            <span class="exercise-name-title">Exercise name</span>
-            <span class="exercise-rep-range-title">Rep Range</span>
-            <span class="exercise-notes-title">Notes</span>
-          </li>
-          <li class="exercise-list-item" v-for="(exercise, index) in getProgramWorkout(getAddExerciseDialogActiveId).exercises" :key="index">
-            <span class="exercise-name">{{ exercise.name }}</span>
-            <span class="exercise-rep-range">{{ exercise.repRangeMin }}-{{ exercise.repRangeMax }}</span>
-            <span class="exercise-notes">{{ exercise.notes }}</span>
-          </li>
-        </ul>
+        <v-card variant="tonal" v-for="(exercise, index) in getProgramWorkout(getAddExerciseDialogActiveId).exercises" :key="index">
+          <v-card-title><v-text-field label="Exercise name" type="number" :text="exercise.name" v-model="exercise.name"/></v-card-title>
+          <v-card-text>
+            <div class="exercise-rep-range"><v-text-field label="Min Reps" type="number" v-model.number="repMin"/><span>-</span><v-text-field label="Max Reps" type="number" v-model.number="repMax"/></div>
+            <div class="exercise-notes">
+              <v-textarea
+                clearable
+                counter
+                no-resize
+                label="Notes"
+                v-text="exercise.notes">
+              </v-textarea>
+            </div>
+          </v-card-text>
+          <!-- <v-card-actions>
+            <v-btn text="Save"/>
+            <v-btn text="Cancel" @click="closeDialog"/>
+          </v-card-actions> -->
+        </v-card>
+        <v-btn variant="tonal"><span>+</span>Add Exercise</v-btn>
       </v-card-text>
       <v-card-actions>
         <v-btn text="Save"/>
         <v-btn text="Cancel" @click="closeDialog"/>
-    </v-card-actions>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -28,6 +36,12 @@ import { mapGetters, mapMutations } from 'vuex'
 
   export default {
     name: 'AddNewExerciseDialog',
+    data() {
+      return {
+        repMin: 6,
+        repMax: 12,
+      }
+    },
     computed: {
       ...mapGetters([
         "getAddExerciseDialogIsOpen",
@@ -59,21 +73,26 @@ import { mapGetters, mapMutations } from 'vuex'
     list-style: none;
   }
 
-  ul.exercise-list {
-    li {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 1em;
-      align-items: center;
-      padding: 0.25em 0.5em;
+  .exercise-rep-range {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2em;
+    gap: 0.5em;
 
-      &:nth-child(even) {
-        background-color: $main-black;
-      }
+    span {
+      font-size: 1.5em;
+    }
+
+    input {
+      display: inline-block;
     }
   }
+</style>
 
-  .exercise-list-headers {
-    font-weight: bold;
+<style lang="scss">
+  .exercise-rep-range {
+    .v-input .v-input__details {
+      display: none;
+    }
   }
 </style>
