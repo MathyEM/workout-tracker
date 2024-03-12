@@ -1,5 +1,5 @@
 <template>
-  <v-dialog class="add-new-exercise" v-model="controlDialog" width="auto">
+  <v-dialog class="edit-workout" v-model="controlDialog" width="auto">
     <v-card max-width="600" title="Edit Workout">
       <v-card-text>
         <v-card variant="tonal" v-for="(exercise, index) in getProgramWorkout(getAddExerciseDialogActiveId).exercises" :key="index">
@@ -35,7 +35,7 @@
 import { mapGetters, mapMutations } from 'vuex'
 
   export default {
-    name: 'AddNewExerciseDialog',
+    name: 'EditWorkoutDialog',
     data() {
       return {
         repMin: 6,

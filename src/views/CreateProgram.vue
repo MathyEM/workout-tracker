@@ -7,7 +7,7 @@
     <template v-for="(Workout, index) in getProgramWorkouts" :key="index">
       <ProgramWorkoutCard :exercises="Workout.exercises" :id="index" title=""/>
     </template>
-    <AddNewExerciseDialog/>
+    <EditWorkoutDialog/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import ProgramName from "@/components/pages/CreateNewProgram/ProgramName.vue"
 import ProgramDescription from "@/components/pages/CreateNewProgram/ProgramDescription.vue"
 import AddNewProgramDayButton from "@/components/pages/CreateNewProgram/AddNewProgramDayButton.vue"
 import ProgramWorkoutCard from "@/components/pages/CreateNewProgram/ProgramWorkoutCard.vue"
-import AddNewExerciseDialog from '@/components/pages/CreateNewProgram/AddNewExerciseDialog.vue'
+import EditWorkoutDialog from '@/components/pages/CreateNewProgram/EditWorkoutDialog.vue'
 
   export default {
     name: 'CreateProgram',
@@ -27,7 +27,7 @@ import AddNewExerciseDialog from '@/components/pages/CreateNewProgram/AddNewExer
       ProgramDescription,
       AddNewProgramDayButton,
       ProgramWorkoutCard,
-      AddNewExerciseDialog,
+      EditWorkoutDialog,
     },
     data() {
       return {
