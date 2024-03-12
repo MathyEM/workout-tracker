@@ -1,5 +1,3 @@
-var MurmurHash3 = require('imurmurhash');
-
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 1,
@@ -246,7 +244,7 @@ const state = {
       ],
       "type": 0,
       "notes": "Nothing.",
-      "hash": 3357665225
+      "hash": "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151"
     }
   ]
 }
@@ -360,7 +358,7 @@ const actions = {
     commit('CHECK_MUSCLE_GROUP', {index, subIndex})
     return
   },
-  addExercise({state, commit, getters}) {
+  async addExercise({state, commit, getters}) {
     const exercise = {
       name: getters.getExerciseName.toLowerCase(),
       category: state.exerciseCategory,
@@ -368,10 +366,7 @@ const actions = {
       type: state.exerciseType,
     }
 
-    let hashState = new MurmurHash3()
-    hashState = hashState.hash(JSON.stringify(exercise))
-
-    const hash = hashState.result()
+    const hash = await sha256Hash(exercise)
 
     if(checkHashes(hash)) {
       console.log('exercise already exists.')
@@ -389,6 +384,14 @@ const actions = {
 function checkHashes(hash) {
   const matches = state.exercises.find((exercise) => exercise.hash == hash)
   return matches
+}
+
+async function sha256Hash(source) {
+  const sourceString = JSON.stringify(source);
+  const sourceBytes = new TextEncoder().encode(sourceString);
+  const digest = await crypto.subtle.digest("SHA-256", sourceBytes);
+  const resultBytes = [...new Uint8Array(digest)];
+  return resultBytes.map(x => x.toString(16).padStart(2, '0')).join("");
 }
 
 export default {
