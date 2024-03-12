@@ -228,23 +228,25 @@ const state = {
       "name": "Lat Pulldown",
       "category": 1,
       "muscleGroups": [
-          [
-              1,
-              0,
-              1,
-              2
-          ],
-          [
-              5
-          ],
-          [
-              7,
-              0
-          ]
+          [1, 0, 1, 2],
+          [5],
+          [7, 0]
       ],
       "type": 0,
       "notes": "Nothing.",
       "hash": "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151",
+    },
+    {
+      "name":"Bench Press",
+      "category": 5,
+      "muscleGroups": [
+        [2, 0, 1],
+        [4, 0],
+        [6]
+      ],
+      "type":0,
+      "notes":"Nothing.",
+      "hash":"d2ca9c77a6b2afaf5efa603462cff01d55bfb3ab20400ce43b9f011f889a393c",
     }
   ]
 }
@@ -276,9 +278,13 @@ const getters = {
   },
   getMuscleGroups: state => state.muscleGroups,
   getExerciseCategories: state => state.exerciseCategories,
+  getCategory: state => id => state.exerciseCategories.find(category => category.id == id),
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
-  getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash )
+  getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash),
+  getCategoryExercises: (state) => (categoryId) => {
+    state.exercises.find((exercise) => exercise.category == categoryId)
+  }
 }
 
 const mutations = {
