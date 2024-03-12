@@ -5,7 +5,25 @@
         <v-card variant="tonal" v-for="(exercise, index) in getWorkout(getEditWorkoutDialogId).exercises" :key="index">
           <v-card-title><v-text-field label="Exercise name" type="number" :text="exercise.name" v-model="exercise.name"/></v-card-title>
           <v-card-text>
-            <div class="exercise-rep-range"><v-text-field label="Min Reps" type="number" v-model.number="repMin"/><span>-</span><v-text-field label="Max Reps" type="number" v-model.number="repMax"/></div>
+            <div class="exercise-rep-range">
+              <v-select
+                label="Rep Type"
+                v-model="repType"
+                :items="getRepTypes"
+                :item-props="true"
+              />
+              <v-text-field
+                type="number"
+                label="Min Reps"
+                v-model.number="repMin"
+              />
+              <span>-</span>
+              <v-text-field
+                type="number"
+                label="Max Reps"
+                v-model.number="repMax"
+              />
+            </div>
             <div class="exercise-notes">
               <v-textarea
                 clearable
@@ -47,6 +65,8 @@ import { mapGetters, mapMutations } from 'vuex'
         "getShowEditWorkoutDialog",
         "getEditWorkoutDialogId",
         "getWorkout",
+        "getRepTypes",
+        "getSelectedRepType",
       ]),
       controlDialog: {
         get() {
@@ -56,10 +76,19 @@ import { mapGetters, mapMutations } from 'vuex'
           this.SET_SHOW_EDIT_WORKOUT_DIALOG(newValue)
         }
       },
+      repType: {
+        get() {
+          return this.getSelectedRepType
+        },
+        set(newValue) {
+          this.UPDATE_SELECTED_REP_TYPE(newValue)
+        }
+      }
     },
     methods: {
       ...mapMutations([
-        'SET_SHOW_EDIT_WORKOUT_DIALOG'
+        'SET_SHOW_EDIT_WORKOUT_DIALOG',
+        "UPDATE_SELECTED_REP_TYPE",
       ]),
       closeDialog() {
         this.SET_SHOW_EDIT_WORKOUT_DIALOG(false)
@@ -74,7 +103,8 @@ import { mapGetters, mapMutations } from 'vuex'
   }
 
   .exercise-rep-range {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 3fr min-content 3fr;
     align-items: center;
     padding-bottom: 2em;
     gap: 0.5em;

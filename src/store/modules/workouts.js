@@ -1,7 +1,21 @@
 const state = {
   editWorkoutDialogId: null,
   showEditWorkoutDialog: false,
-  repTypes: ["Reps", "RPE", "RR"],
+  repTypes: [
+    {
+      title: "Reps",
+      subtitle: "Repititions",
+    },
+    {
+      title: "RPE",
+      subtitle: "Rate of Percieved Exhaustion",
+    },
+    {
+      title: "RR",
+      subtitle: "Reps in Reserve",
+    },
+  ],
+  selectedRepType: 0,
   workouts: [
     /*
     type Workout = {
@@ -25,6 +39,8 @@ const getters = {
   getEditWorkoutDialogId: state => state.editWorkoutDialogId,
   getWorkouts: state => state.workouts,
   getWorkout: (state) => (id) => state.workouts[id],
+  getRepTypes: state => state.repTypes,
+  getSelectedRepType: state => state.repTypes[state.selectedRepType],
 }
 
 const mutations = {
@@ -36,7 +52,11 @@ const mutations = {
   },
   ADD_WORKOUT(state, payload) {
     state.workouts.push(payload)
-  }
+  },
+  UPDATE_SELECTED_REP_TYPE(state, payload) {
+    const index = state.repTypes.findIndex((obj) => obj.title == payload)
+    state.selectedRepType = index
+  },
 }
 
 const actions = {
