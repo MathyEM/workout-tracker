@@ -4,8 +4,8 @@
     <ProgramName/>
     <ProgramDescription/>
     <AddWorkoutButton/>
-    <template v-for="(Workout, index) in getProgramWorkouts" :key="index">
-      <ProgramWorkoutCard :exercises="Workout.exercises" :id="index" title=""/>
+    <template v-for="(workout, index) in getWorkouts" :key="index">
+      <ProgramWorkoutCard :exercises="workout.exercises" :id="index" title=""/>
     </template>
     <EditWorkoutDialog/>
   </div>
@@ -36,7 +36,7 @@ import EditWorkoutDialog from '@/components/pages/CreateNewProgram/EditWorkoutDi
     },
     computed: {
       ...mapGetters([
-        "getProgramWorkouts",
+        "getWorkouts",
       ])
     }
   }

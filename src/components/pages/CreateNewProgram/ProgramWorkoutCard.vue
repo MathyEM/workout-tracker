@@ -35,12 +35,12 @@ import { mapMutations } from 'vuex'
     },
     methods: {
       openDialog() {
-        this.SET_ADD_EXERCISE_DIALOG_ACTIVE_ID(this.id)
-        this.SET_ADD_EXERCISE_DIALOG_IS_OPEN(true)
+        this.SET_EDIT_WORKOUT_DIALOG_ID(this.id)
+        this.SET_SHOW_EDIT_WORKOUT_DIALOG(true)
       },
       ...mapMutations([
-        'SET_ADD_EXERCISE_DIALOG_IS_OPEN',
-        'SET_ADD_EXERCISE_DIALOG_ACTIVE_ID',
+        'SET_EDIT_WORKOUT_DIALOG_ID',
+        'SET_SHOW_EDIT_WORKOUT_DIALOG',
       ])
     }
   }

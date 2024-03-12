@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
-import programs from './modules/programs'
 import exercises from './modules/exercises'
+import workouts from './modules/workouts'
+import programs from './modules/programs'
 
 export default createStore({
   state: {
@@ -12,7 +13,8 @@ export default createStore({
   actions: {
   },
   modules: {
+    exercises,
+    workouts,
     programs,
-    exercises
   }
 })

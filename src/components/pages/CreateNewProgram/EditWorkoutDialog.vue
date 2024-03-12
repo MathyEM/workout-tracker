@@ -2,7 +2,7 @@
   <v-dialog class="edit-workout" v-model="controlDialog" width="auto">
     <v-card max-width="600" title="Edit Workout">
       <v-card-text>
-        <v-card variant="tonal" v-for="(exercise, index) in getProgramWorkout(getAddExerciseDialogActiveId).exercises" :key="index">
+        <v-card variant="tonal" v-for="(exercise, index) in getWorkout(getEditWorkoutDialogId).exercises" :key="index">
           <v-card-title><v-text-field label="Exercise name" type="number" :text="exercise.name" v-model="exercise.name"/></v-card-title>
           <v-card-text>
             <div class="exercise-rep-range"><v-text-field label="Min Reps" type="number" v-model.number="repMin"/><span>-</span><v-text-field label="Max Reps" type="number" v-model.number="repMax"/></div>
@@ -44,25 +44,25 @@ import { mapGetters, mapMutations } from 'vuex'
     },
     computed: {
       ...mapGetters([
-        "getAddExerciseDialogIsOpen",
-        "getAddExerciseDialogActiveId",
-        "getProgramWorkout",
+        "getShowEditWorkoutDialog",
+        "getEditWorkoutDialogId",
+        "getWorkout",
       ]),
       controlDialog: {
         get() {
-          return this.getAddExerciseDialogIsOpen
+          return this.getShowEditWorkoutDialog
         },
         set(newValue) {
-          this.SET_ADD_EXERCISE_DIALOG_IS_OPEN(newValue)
+          this.SET_SHOW_EDIT_WORKOUT_DIALOG(newValue)
         }
       },
     },
     methods: {
       ...mapMutations([
-        'SET_ADD_EXERCISE_DIALOG_IS_OPEN'
+        'SET_SHOW_EDIT_WORKOUT_DIALOG'
       ]),
       closeDialog() {
-        this.SET_ADD_EXERCISE_DIALOG_IS_OPEN(false)
+        this.SET_SHOW_EDIT_WORKOUT_DIALOG(false)
       }
     }
   }
