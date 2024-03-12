@@ -12,7 +12,7 @@
     <v-card-actions class="card-actions">
       <v-btn
       @click="openDialog"
-      text="Add exercises"
+      text="Edit Workout"
       rounded="lg"
       density="comfortable"
       variant="tonal"/>

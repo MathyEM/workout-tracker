@@ -40,7 +40,7 @@
           </v-card-actions> -->
         </v-card>
         <div class="btn-container">
-          <v-btn class="edit-workout" variant="tonal"><span>+</span>Edit Workout</v-btn>
+          <v-btn class="edit-workout" variant="tonal"><span>+</span>Add Exercise</v-btn>
         </div>
       </v-card-text>
       <v-card-actions>
@@ -140,6 +140,11 @@ import { mapGetters, mapMutations } from 'vuex'
     .v-card .v-card-text {
       display: grid;
       gap: 1em;
+    }
+
+    .btn-container .v-btn__content {
+      display: flex;
+      gap: 0.25em;
     }
   }
   .exercise-rep-range {
