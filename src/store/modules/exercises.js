@@ -1,3 +1,5 @@
+import { sha256Hash } from ".."
+
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 1,
@@ -244,7 +246,7 @@ const state = {
       ],
       "type": 0,
       "notes": "Nothing.",
-      "hash": "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151"
+      "hash": "ae545180dbdc2453e2bbbb3dd820179d80d631ea2858a308a2c76d637135c151",
     }
   ]
 }
@@ -384,14 +386,6 @@ const actions = {
 function checkHashes(hash) {
   const matches = state.exercises.find((exercise) => exercise.hash == hash)
   return matches
-}
-
-async function sha256Hash(source) {
-  const sourceString = JSON.stringify(source);
-  const sourceBytes = new TextEncoder().encode(sourceString);
-  const digest = await crypto.subtle.digest("SHA-256", sourceBytes);
-  const resultBytes = [...new Uint8Array(digest)];
-  return resultBytes.map(x => x.toString(16).padStart(2, '0')).join("");
 }
 
 export default {
