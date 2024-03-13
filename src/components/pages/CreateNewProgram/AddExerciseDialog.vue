@@ -34,6 +34,7 @@ import VerticalMenu from '@/components/VerticalMenu.vue'
   .vertical-menu-container {
     display: flex;
     flex-direction: column;
-    
+    max-height: 35svh;
+    overflow: auto;
   }
 </style>

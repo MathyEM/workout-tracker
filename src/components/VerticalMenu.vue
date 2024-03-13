@@ -36,9 +36,11 @@ export default {
 <style scoped lang="scss">
   * {
     box-sizing: border-box;
+    user-select: none;
   }
   .inner-container {
     padding: 0;
+    padding-right: 0.25em;
     position: relative;
     
     input {
@@ -50,17 +52,17 @@ export default {
       position: relative;
     }
 
+    label, li {
+      border-radius: 4px;
+    }
+    
     label {
       display: flex;
       width: 100%;
       align-items: center;
       justify-content: space-between;
-      padding: 0;
-
-    }
-    
-    label, li {
-      border-radius: 4px;
+      padding: 0 1em;
+      padding-right: 5em;
     }
   }
 
@@ -76,6 +78,7 @@ export default {
     top: 0;
     height: auto;
     padding: 0.75em;
+    padding-right: 1em;
     transform: translateY(0.15em);
   }
 
@@ -123,7 +126,7 @@ export default {
 
   .inner-container {
     ul li {
-      padding-left: 0.5em;
+      padding-left: 1.5em;
     }
     label:hover, .inner-container ul li:hover, ul li:nth-child(odd):hover {
       background: rgb(var(--v-theme-surface-light));
