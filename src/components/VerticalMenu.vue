@@ -56,6 +56,11 @@ export default {
       align-items: center;
       justify-content: space-between;
       padding: 0;
+
+    }
+    
+    label, li {
+      border-radius: 4px;
     }
   }
 
@@ -120,15 +125,8 @@ export default {
     ul li {
       padding-left: 0.5em;
     }
-    ul li:nth-child(odd) {
-      background: lightgray;
-    }
-    label:hover, .inner-container ul li:hover {
-      background: lightgreen;
-    }
-
-    ul li:last-child {
-      padding-bottom: 0.5em;
+    label:hover, .inner-container ul li:hover, ul li:nth-child(odd):hover {
+      background: rgb(var(--v-theme-surface-light));
     }
   }
 </style>

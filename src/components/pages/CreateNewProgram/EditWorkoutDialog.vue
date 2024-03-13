@@ -41,7 +41,7 @@
         </v-card>
         <AddExerciseDialog/>
         <div class="btn-container">
-          <v-btn class="edit-workout" variant="tonal"><span>+</span>Add Exercise</v-btn>
+          <v-btn class="add-exercise" variant="tonal"><span>+</span>Add Exercise</v-btn>
         </div>
       </v-card-text>
       <v-card-actions>
