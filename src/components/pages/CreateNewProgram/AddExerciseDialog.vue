@@ -1,7 +1,7 @@
 <template>
   <!-- <v-card>
     <v-card-title>Select Exercise</v-card-title> -->
-    <v-list open-strategy="multiple">
+    <!-- <v-list open-strategy="multiple">
       <v-list-group v-for="(category, index) in categories" :key="index" :value="category.name">
         <template v-slot:activator="{ props }">
           <v-list-item
@@ -15,19 +15,25 @@
         :title="exercise.name"
         ></v-list-item>
       </v-list-group>
-    </v-list>
+    </v-list> -->
     <!-- <v-card-actions>
       <v-btn text="Save"/>
       <v-btn text="Cancel" @click="closeDialog"/>
     </v-card-actions> -->
   <!-- </v-card> -->
+  <VerticalMenu :items="getCategorizedExercises"/>
+
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
+import VerticalMenu from '@/components/VerticalMenu.vue'
 
   export default {
     name: 'AddExerciseDialog',
+    components: {
+      VerticalMenu
+    },
     computed: {
       ...mapGetters([
         "getExerciseCategories",

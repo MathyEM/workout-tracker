@@ -1,7 +1,7 @@
 <template>
   <div class="outer-container">
     <div class="inner-container">
-      <div v-for="(category, index) in items" :key="index">
+      <div v-for="(category, i) in items" :key="i">
         <label :for="category.title" :id="'chevron-'+category.title">
           <span>{{ category.title }}</span>
         </label>
@@ -9,7 +9,7 @@
         <span class="chevron"></span>
         <div class="hidden-content">
           <ul v-if="category.exercises">
-            <li v-for="exercise in category.exercises">
+            <li v-for="(exercise, j) in category.exercises" :key="j">
               <span>{{ exercise }}</span>
             </li>
           </ul>
@@ -121,7 +121,7 @@ export default {
     padding: 0;
     margin: 0;
   }
-  
+
   .inner-container {
     ul li {
       padding-left: 0.5em;
