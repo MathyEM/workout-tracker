@@ -290,7 +290,14 @@ const getters = {
   getCategorizedExercises: rootState => {
     const categorizedExercises = []
     rootState.exerciseCategories.forEach(category => {
-      categorizedExercises[category.name] = rootState.exercises.filter(exercise => exercise.category == category.id)
+      const exercises = rootState.exercises.filter(exercise => {
+        return exercise.category == category.id
+      })
+
+      categorizedExercises.push({
+        title: category.name,
+        exercises: exercises
+      })
     })
     return categorizedExercises
   }

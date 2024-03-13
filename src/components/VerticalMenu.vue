@@ -10,7 +10,7 @@
         <div class="hidden-content">
           <ul v-if="category.exercises">
             <li v-for="(exercise, j) in category.exercises" :key="j">
-              <span>{{ exercise }}</span>
+              <span>{{ exercise.name }}</span>
             </li>
           </ul>
         </div>
@@ -39,7 +39,6 @@ export default {
   }
   .inner-container {
     padding: 0;
-    background: gray;
     position: relative;
     
     input {
@@ -59,11 +58,6 @@ export default {
       padding: 0;
     }
   }
-
-
-  .inner-container 
-
-  .inner-container 
 
   span {
     display: flex;
@@ -99,7 +93,7 @@ export default {
   }
 
   .outer-container {
-    height: 0;
+    height: fit-content;
   }
   .outer-container, .inner-container {
     display: flex;
