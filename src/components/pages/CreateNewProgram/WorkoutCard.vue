@@ -29,7 +29,7 @@ import { mapMutations, mapGetters } from 'vuex'
       title: String,
       exercises: Array,
       id: {
-        type: Number,
+        type: String,
         required: true
       },
     },

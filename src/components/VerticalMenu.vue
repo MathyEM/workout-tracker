@@ -12,7 +12,8 @@
             <li
               v-for="(subItem, j) in category.subItems"
               :key="j"
-              @click="console.log(subItem.hash)">
+              @click="subItemClick(subItem.hash || subItem.id)"
+            >
               <span>{{ subItem.name }}</span>
             </li>
           </ul>
@@ -31,7 +32,7 @@ export default {
         type: Array,
         required: true,
       },
-      itemClick: {
+      subItemClick: {
         type: Function,
       }
     }

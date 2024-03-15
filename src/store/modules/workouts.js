@@ -42,7 +42,7 @@ const getters = {
   getShowAddExerciseDialog: state => state.showAddExerciseDialog,
   getExerciseListOpen: state => state.exerciseListOpen,
   getWorkouts: state => state.workouts,
-  getWorkout: (state) => (id) => state.workouts[id],
+  getWorkout: (state) => (id) => state.workouts.find(workout => workout.id == id),
   getRepTypes: state => state.repTypes,
   getSelectedRepType: state => state.repTypes[state.selectedRepType],
 }
@@ -71,21 +71,9 @@ const mutations = {
 
 const actions = {
   addWorkout({ commit }) {
-     /*
-    type Workout = {
-      "name": String,
-      "exercises": [
-        {
-          "exerciseHash": HashString,
-          "repType": ["Reps"|"RPE"|"RR"],
-          "repRangeMin": Number,
-          "repRangeMax": Number,
-          "notes": String,
-        }
-      ]
-    }
-    */
+    const id = crypto.randomUUID()
     const workout = {
+      id: id,
       name: "Back day",
       exercises: [
         // {
@@ -100,7 +88,13 @@ const actions = {
     }
 
     commit("ADD_WORKOUT", workout)
-  }
+  },
+  addExerciseToWorkout({ commit, getters }, payload) {
+    commit, getters, payload
+    // const activeWorkoutId = getters.getEditWorkoutDialogId
+    console.log(payload)
+  },
+
 }
 
 export default {

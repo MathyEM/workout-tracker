@@ -1,6 +1,6 @@
 <template>
   <div class="vertical-menu-container">
-    <VerticalMenu :items="getCategorizedExercises"/>
+    <VerticalMenu :items="getCategorizedExercises" :subItemClick="addExerciseToWorkout"/>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ import VerticalMenu from '@/components/VerticalMenu.vue'
     methods: {
       ...mapActions([
         "fetchCategoryExercises",
+        "addExerciseToWorkout",
       ])
     },
   }
