@@ -45,6 +45,10 @@ const getters = {
   getWorkout: (state) => (id) => state.workouts.find(workout => workout.id == id),
   getRepTypes: state => state.repTypes,
   getSelectedRepType: state => state.repTypes[state.selectedRepType],
+  getWorkoutExercise: state => index => {
+    const workout = state.workouts.find(workout => workout.id == state.editWorkoutDialogId)
+    return workout.exercises[index]
+  },
 }
 
 const mutations = {
@@ -69,6 +73,23 @@ const mutations = {
 
     state.workouts[workoutIndex].exercises.push(payload.exercise)
   },
+  UPDATE_WORKOUT_EXERCISE_REP_TYPE(state, payload) {
+    const workoutIndex = state.workouts.findIndex(workout => workout.id == state.editWorkoutDialogId)
+    state.workouts[workoutIndex].exercises[payload.exerciseIndex].repType = payload.newValue
+  },
+  UPDATE_WORKOUT_EXERCISE_REPRANGE_MIN(state, payload) {
+    const workoutIndex = state.workouts.findIndex(workout => workout.id == state.editWorkoutDialogId)
+    state.workouts[workoutIndex].exercises[payload.exerciseIndex].repRangeMin = payload.newValue
+  },
+  UPDATE_WORKOUT_EXERCISE_REPRANGE_MAX(state, payload) {
+    const workoutIndex = state.workouts.findIndex(workout => workout.id == state.editWorkoutDialogId)
+    state.workouts[workoutIndex].exercises[payload.exerciseIndex].repRangeMax = payload.newValue
+  },
+  UPDATE_WORKOUT_EXERCISE_NOTES(state, payload) {
+    const workoutIndex = state.workouts.findIndex(workout => workout.id == state.editWorkoutDialogId)
+    state.workouts[workoutIndex].exercises[payload.exerciseIndex].notes = payload.newValue
+
+  }
 }
 
 const actions = {
@@ -98,7 +119,7 @@ const actions = {
       id: activeWorkoutId,
       exercise: {
         hash: payload,
-        repType: 0,
+        repType: "Reps",
         repRangeMin: null,
         repRangeMax: null,
         notes: null,
