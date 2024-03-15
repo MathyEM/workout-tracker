@@ -4,7 +4,7 @@
     <v-card-subtitle>
       <p v-if="exercises.length < 1">No exercises added yet</p>
       <ul v-else>
-        <li v-for="(exercise, index) in exercises.slice(0, 5)" :key="index">{{ getExercise(exercise).name }}</li>
+        <li v-for="(exercise, index) in exercises.slice(0, 5)" :key="index">{{ getExercise(exercise.hash).name }}</li>
       </ul>
 
     </v-card-subtitle>

@@ -67,7 +67,7 @@ const mutations = {
   ADD_EXERCISE_TO_WORKOUT(state, payload) {
     const workoutIndex = state.workouts.findIndex(workout => workout.id == payload.id)
 
-    state.workouts[workoutIndex].exercises.push(payload.exerciseHash)
+    state.workouts[workoutIndex].exercises.push(payload.exercise)
   },
 }
 
@@ -96,7 +96,13 @@ const actions = {
 
     commit("ADD_EXERCISE_TO_WORKOUT", {
       id: activeWorkoutId,
-      exerciseHash: payload
+      exercise: {
+        hash: payload,
+        repType: 0,
+        repRangeMin: null,
+        repRangeMax: null,
+        notes: null,
+      }
     })
   },
 
