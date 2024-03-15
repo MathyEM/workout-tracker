@@ -57,15 +57,17 @@ const mutations = {
   SET_SHOW_ADD_EXERCISE_DIALOG(state, payload) {
     state.showAddExerciseDialog = payload
   },
-  // SET_EXERCISE_LIST_OPEN(state, payload) {
-
-  // },
-  ADD_WORKOUT(state, payload) {
-    state.workouts.push(payload)
-  },
   UPDATE_SELECTED_REP_TYPE(state, payload) {
     const index = state.repTypes.findIndex((obj) => obj.title == payload)
     state.selectedRepType = index
+  },
+  ADD_WORKOUT(state, payload) {
+    state.workouts.push(payload)
+  },
+  ADD_EXERCISE_TO_WORKOUT(state, payload) {
+    const workoutIndex = state.workouts.findIndex(workout => workout.id == payload.id)
+
+    state.workouts[workoutIndex].exercises.push(payload.exerciseHash)
   },
 }
 
@@ -90,9 +92,12 @@ const actions = {
     commit("ADD_WORKOUT", workout)
   },
   addExerciseToWorkout({ commit, getters }, payload) {
-    commit, getters, payload
-    // const activeWorkoutId = getters.getEditWorkoutDialogId
-    console.log(payload)
+    const activeWorkoutId = getters.getEditWorkoutDialogId
+
+    commit("ADD_EXERCISE_TO_WORKOUT", {
+      id: activeWorkoutId,
+      exerciseHash: payload
+    })
   },
 
 }

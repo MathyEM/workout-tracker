@@ -281,7 +281,10 @@ const getters = {
   getCategory: state => id => state.exerciseCategories.find(category => category.id == id),
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
-  getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash),
+  getExercise: (state) => (hash) => {
+    const exercise = state.exercises.find((exercise) => exercise.hash == hash)
+    return exercise
+  },
   getCategorizedExercises: rootState => {
     const categorizedExercises = []
     rootState.exerciseCategories.forEach(category => {
