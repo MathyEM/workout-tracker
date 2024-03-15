@@ -8,9 +8,12 @@
         <input class="trigger" :id="category.title" type="checkbox"/>
         <span class="chevron"></span>
         <div class="hidden-content">
-          <ul v-if="category.exercises">
-            <li v-for="(exercise, j) in category.exercises" :key="j">
-              <span>{{ exercise.name }}</span>
+          <ul v-if="category.subItems">
+            <li
+              v-for="(subItem, j) in category.subItems"
+              :key="j"
+              @click="console.log(subItem.hash)">
+              <span>{{ subItem.name }}</span>
             </li>
           </ul>
         </div>
@@ -28,6 +31,9 @@ export default {
         type: Array,
         required: true,
       },
+      itemClick: {
+        type: Function,
+      }
     }
 }
 

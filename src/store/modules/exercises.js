@@ -282,11 +282,6 @@ const getters = {
   getExerciseTypes: state => state.exerciseTypes,
   getExercises: state => state.exercises,
   getExercise: (state) => (hash) => state.exercises.find((exercise) => exercise.hash == hash),
-  // getCategoryExercises: (rootState) => (categoryId) => {
-  //   // console.log(rootState.exercises)
-  //   const exercise = rootState.exercises.filter((exercise) => exercise.category == categoryId)
-  //   return exercise || null
-  // },
   getCategorizedExercises: rootState => {
     const categorizedExercises = []
     rootState.exerciseCategories.forEach(category => {
@@ -296,7 +291,7 @@ const getters = {
 
       categorizedExercises.push({
         title: category.name,
-        exercises: exercises
+        subItems: exercises
       })
     })
     return categorizedExercises
