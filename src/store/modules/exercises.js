@@ -1,3 +1,5 @@
+import { db } from "@/store/db";
+
 const state = {
   exerciseName: 'Lat Pulldown',
   exerciseCategory: 1,
@@ -397,7 +399,20 @@ const actions = {
     exercise.name = getters.getExerciseName
     exercise.notes = getters.getExerciseNotes
     exercise.hash = hash
+    console.log(exercise)
     commit('ADD_NEW_EXERCISE', exercise)
+    try {
+      await db.exercises.add({
+        hash: exercise.hash,
+        name: exercise.name,
+        category: exercise.category,
+        type: exercise.type,
+        muscleGroups: exercise.muscleGroups,
+        notes: exercise.notes,
+      })
+    } catch (error) {
+      console.log('Failed to add exercise with Error: '+error)
+    }
     console.log(state.exercises)
   },
   fetchCategoryExercises({ rootState }, categoryId) {
